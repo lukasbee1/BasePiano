@@ -12,7 +12,7 @@
  **/
 #include "Piano.h"
 #include "iostream"
-#include "audiere-1.9.4-win32/include/audiere.h"
+
 
 using namespace sf;
 //using namespace audiere;

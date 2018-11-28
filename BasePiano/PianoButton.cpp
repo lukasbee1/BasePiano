@@ -1,6 +1,5 @@
-﻿#define _CRT_SECURE_NO_WARNINGS
-#include "PianoButton.h"
-#include <iostream>
+﻿#include "PianoButton.h"
+
 int PianoButton::widthSize;
 void PianoButton::init()
 {
@@ -27,24 +26,17 @@ void PianoButton::setTexture(std::string s)
 }
 
 
-PianoButton::PianoButton(std::string f1, std::string f2, std::string sf1) : file(f1), file2(f2), soundFile(sf1)
+PianoButton::PianoButton(std::string f1, std::string f2, std::string bf1) : file(f1), file2(f2), soundFile(bf1)
 {
 	buttonImage[0].loadFromFile("images/" + file);
 	buttonImage[1].loadFromFile("images/" + file2); //pressed
+	
+	soundBuffer.loadFromFile("sounds/" + soundFile + ".wav");
+	buttonSound.setBuffer(soundBuffer);	
 	buttonTexture[0].loadFromImage(buttonImage[0]);
 	buttonTexture[1].loadFromImage(buttonImage[1]); //pressed
 	this->setTexture("released");			//released as 
 
-	/////converting from string to char array
-	std::string s = "sounds/" + sf1 + ".wav";
-	char * tab2 = new char[s.length() + 1];
-	strcpy(tab2, s.c_str());
-	
-	sound = OpenSound(audioDevice, (tab2), false); //создаем поток для нашего звука
-	if (!sound) {
-		std::cout << "opening sound file error...";
-		system("pause");
-	}
 }
 
 void PianoButton::changeState() {
@@ -62,12 +54,14 @@ bool PianoButton::getState() {
 }
 
 void PianoButton::buttonPlay() {
-	this->sound->play();
+	buttonSound.setBuffer(soundBuffer);
+	buttonSound.play();
 	this->setTexture("pressed");
 	this->changeState();
 }
 void PianoButton::buttonStop() {
-	this->sound->stop();
+	buttonSound.setBuffer(soundBuffer);
+	buttonSound.stop();
 	this->setTexture("released");
 	this->changeState();
 }

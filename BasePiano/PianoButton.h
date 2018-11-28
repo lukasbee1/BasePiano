@@ -2,7 +2,6 @@
 
 #include "SFML/Graphics.hpp"
 #include "SFML/Audio.hpp"
-#include "audiere.h"
 class PianoButton
 {
 private:
@@ -12,12 +11,13 @@ private:
 	sf::Image buttonImage[2];
 	sf::Texture buttonTexture[2];
 	sf::Sprite buttonSprite;
+	sf::SoundBuffer soundBuffer;
+	sf::Sound buttonSound;
 	static int widthSize;
 	bool state = false;
 	char buttonKey;
 	
-	audiere::AudioDevicePtr audioDevice = audiere::OpenDevice(); //Для начала нужно открыть AudioDevice 
-	audiere::OutputStreamPtr sound;
+	
 
 public:
 	static void init();
