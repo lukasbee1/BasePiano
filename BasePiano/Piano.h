@@ -1,5 +1,6 @@
 #pragma once
 #include "PianoButton.h"
+#include "audiere-1.9.4-win32/include/audiere.h"
 #include <vector>
 #include <string>
 
@@ -11,5 +12,5 @@ public:
 	sf::Sprite getSprite(int i);
 	Piano(int n, sf::RenderWindow & renderWindow);
 	Piano(int n, std::string f1, std::string f2, std::string sf1, int X, int Y, sf::RenderWindow & renderWindow);
-	
+	void buttonPlay(int i);
 };
