@@ -45,6 +45,3 @@ Piano::Piano(int n, std::string f1, std::string f2, std::string sf1, int X, int 
 	renderWindow.display();
 }
 
-void Piano::buttonPlay(int i) {
-	MyButton[i]->buttonSound.play();
-}

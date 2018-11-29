@@ -10,18 +10,14 @@
  * end      - ..... before 25 december
  *
  **/
-#define SND_FILENAME 0x20000
-#define SND_LOOP 8
-#define SND_ASYNC 1
+
 
 #include "Piano.h"
 #include "iostream"
-#include <Windows.h>
 
 
 
 using namespace sf;
-//using namespace audiere;
 using std::string;
 const short COUNT_OF_KEYS = 7;
 
@@ -36,9 +32,6 @@ int main(int argc, char **argv)
 	//Piano piano2(COUNT_OF_KEYS, "pianoNum", "pianoPressedNum", "noty-", 0, 10, renderWindow);
 	Piano piano(COUNT_OF_KEYS, renderWindow);
 
-
-	
-
 	while (renderWindow.isOpen())
 	{
 		while (renderWindow.pollEvent(event))
@@ -50,7 +43,7 @@ int main(int argc, char **argv)
 		if (Keyboard::isKeyPressed(Keyboard::A) && !piano.MyButton[0].getState())
 		{
 			piano.MyButton[0].buttonPlay();
-			piano.buttonPlay(0);										////нужно сделать метод баттонПлей в объекте пьено вместо баттонПьено
+										////нужно сделать метод баттонПлей в объекте пьено вместо баттонПьено
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::S) && !piano.MyButton[1].getState())
