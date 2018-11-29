@@ -58,7 +58,6 @@ void PianoButton::buttonPlay() {
 	buttonSound.setBuffer(soundBuffer);
 	buttonSound.play();
 	this->setTexture("pressed");
-	this->renderWindow.draw(this.getSprite(i));
 	
 }
 void PianoButton::buttonStop() {
