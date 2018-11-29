@@ -10,8 +10,14 @@
  * end      - ..... before 25 december
  *
  **/
+#define SND_FILENAME 0x20000
+#define SND_LOOP 8
+#define SND_ASYNC 1
+
 #include "Piano.h"
 #include "iostream"
+#include <Windows.h>
+
 
 
 using namespace sf;
@@ -44,14 +50,15 @@ int main(int argc, char **argv)
 		if (Keyboard::isKeyPressed(Keyboard::A) && !piano.MyButton[0].getState())
 		{
 			piano.MyButton[0].buttonPlay();
+			piano.buttonPlay(0);										////нужно сделать метод баттонПлей в объекте пьено вместо баттонПьено
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::S) && !piano.MyButton[1].getState())
-		{
+		{			
 			piano.MyButton[1].buttonPlay();
 		}
 		if (Keyboard::isKeyPressed(Keyboard::D) && !piano.MyButton[2].getState())
-		{
+		{			
 			piano.MyButton[2].buttonPlay();
 		}
 		if (Keyboard::isKeyPressed(Keyboard::F) && !piano.MyButton[3].getState())
@@ -70,9 +77,12 @@ int main(int argc, char **argv)
 		{
 			piano.MyButton[6].buttonPlay();
 		}
-
-
 		renderWindow.clear();
+		for (int i = 0; i < COUNT_OF_KEYS; i++) {
+			renderWindow.draw(piano.getSprite(i));
+			//			renderWindow.draw(piano2.getSprite(i));
+		}
+		
 		for (int i = 0; i < COUNT_OF_KEYS; i++) {
 			if (event.type == Event::KeyReleased) {
 				if (piano.MyButton[i].getButtonKey() == event.key.code + 65) {
@@ -81,12 +91,9 @@ int main(int argc, char **argv)
 				}
 			}
 		}
-
 		
-		for (int i = 0; i < COUNT_OF_KEYS; i++) {
-			renderWindow.draw(piano.getSprite(i));
-//			renderWindow.draw(piano2.getSprite(i));
-		}
+		
+		
 
 		renderWindow.display();
 	}

@@ -54,13 +54,15 @@ bool PianoButton::getState() {
 }
 
 void PianoButton::buttonPlay() {
+	this->changeState();
 	buttonSound.setBuffer(soundBuffer);
 	buttonSound.play();
 	this->setTexture("pressed");
-	this->changeState();
+	this->renderWindow.draw(this.getSprite(i));
+	
 }
 void PianoButton::buttonStop() {
-	buttonSound.setBuffer(soundBuffer);
+	//buttonSound.setBuffer(soundBuffer);
 	buttonSound.stop();
 	this->setTexture("released");
 	this->changeState();
