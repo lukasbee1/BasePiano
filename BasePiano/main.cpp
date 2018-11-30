@@ -10,13 +10,11 @@
  * end      - ..... before 25 december
  *
  **/
-#define SND_FILENAME 0x20000
-#define SND_LOOP 8
-#define SND_ASYNC 1
 
 #include "Piano.h"
 #include "iostream"
 #include <Windows.h>
+#include "mmsystem.h"
 
 
 
@@ -49,8 +47,11 @@ int main(int argc, char **argv)
 
 		if (Keyboard::isKeyPressed(Keyboard::A) && !piano.MyButton[0].getState())
 		{
+			
+			PlaySound(TEXT("sounds/noty-1.wav"),NULL, SND_ASYNC);
 			piano.MyButton[0].buttonPlay();
-												////нужно сделать метод баттонПлей в объекте пьено вместо баттонПьено
+			
+			
 		}
 
 		if (Keyboard::isKeyPressed(Keyboard::S) && !piano.MyButton[1].getState())
@@ -79,12 +80,11 @@ int main(int argc, char **argv)
 		}
 		renderWindow.clear();
 		
-		
-		for (int i = 0; i < COUNT_OF_KEYS; i++) {
-			if (event.type == Event::KeyReleased) {
+		if (event.type == Event::KeyReleased){
+		for (int i = 0; i < COUNT_OF_KEYS; i++) { 
+				PlaySound(NULL, NULL, SND_SYNC);
 				if (piano.MyButton[i].getButtonKey() == event.key.code + 65) {
 					piano.MyButton[i].buttonStop();
-					renderWindow.draw(piano.getSprite(i));
 					renderWindow.draw(piano.getSprite(i));
 				}
 			}

@@ -55,8 +55,8 @@ bool PianoButton::getState() {
 
 void PianoButton::buttonPlay() {
 	this->changeState();
-	buttonSound.setBuffer(soundBuffer);
-	buttonSound.play();
+	//buttonSound.setBuffer(soundBuffer);
+	//buttonSound.play();
 	this->setTexture("pressed");
 	
 }
