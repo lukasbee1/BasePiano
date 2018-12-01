@@ -30,20 +30,18 @@ PianoButton::PianoButton(std::string f1, std::string f2, std::string bf1) : file
 {
 	buttonImage[0].loadFromFile("images/" + file);
 	buttonImage[1].loadFromFile("images/" + file2); //pressed
-	
 	soundBuffer.loadFromFile("sounds/" + soundFile + ".wav");
-	buttonSound.setBuffer(soundBuffer);	
+	buttonSound.setBuffer(soundBuffer);
 	buttonTexture[0].loadFromImage(buttonImage[0]);
 	buttonTexture[1].loadFromImage(buttonImage[1]); //pressed
 	this->setTexture("released");			//released as 
-
 }
 
 
 void PianoButton::setButtonKey(char key) {
 	this->buttonKey = key;
 }
-char PianoButton::getButtonKey(){
+char PianoButton::getButtonKey() {
 	return this->buttonKey;
 }
 
@@ -51,10 +49,8 @@ void PianoButton::buttonPlay() {
 	buttonSound.setBuffer(soundBuffer);
 	buttonSound.play();
 	this->setTexture("pressed");
-	
 }
 void PianoButton::buttonStop() {
-	//buttonSound.setBuffer(soundBuffer);
 	buttonSound.stop();
 	this->setTexture("released");
 }

@@ -4,9 +4,9 @@
 #include <vector>
 #include <string>
 
-class Piano{
+class Piano {
 private:
-	char keyArray[14] = {'A','S','D','F','J','K','L','Z','X','C','V','M',',','.'};
+	char keyArray[14] = { 'A','S','D','F','J','K','L','Z','X','C','V','M',',','.' };
 public:
 	std::vector<PianoButton> MyButton;
 	sf::Sprite getSprite(int i);

@@ -1,14 +1,12 @@
 #include "Piano.h"
 
-sf::Sprite Piano::getSprite(int i)
-{
+sf::Sprite Piano::getSprite(int i) {
 	return MyButton[i].getSprite();
 }
 
-Piano::Piano(int n, sf::RenderWindow & renderWindow)
-{
+Piano::Piano(int n, sf::RenderWindow & renderWindow) {
 	MyButton.reserve(n);
-	
+
 	for (int i = 0; i < n; i++)
 	{
 
@@ -24,8 +22,7 @@ Piano::Piano(int n, sf::RenderWindow & renderWindow)
 }
 
 // You should to name your textures as 'file + 1,2,3,...., n + .jpg' and enter X,Y positions
-Piano::Piano(int n, std::string f1, std::string f2, std::string sf1, int X, int Y, sf::RenderWindow & renderWindow)
-{
+Piano::Piano(int n, std::string f1, std::string f2, std::string sf1, int X, int Y, sf::RenderWindow & renderWindow) {
 	MyButton.reserve(n);
 	for (int i = 0, j = 0; j < n; i++, j++)
 	{

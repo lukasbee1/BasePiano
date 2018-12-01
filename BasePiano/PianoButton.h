@@ -16,21 +16,15 @@ private:
 	static int widthSize;
 	char buttonKey;
 
-
-
 public:
 	static void init();
 	sf::Sprite getSprite();
-
 	void setPosition(int X, int Y);
-
 	void setTexture(std::string s);
-
-	PianoButton(std::string f1, std::string f2, std::string sf1);
-
 	void setButtonKey(char key);
 	char getButtonKey();
 	void buttonPlay();
 	void buttonStop();
 	bool buttonStatus();
+	PianoButton(std::string f1, std::string f2, std::string sf1);
 };
