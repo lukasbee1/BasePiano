@@ -34,8 +34,8 @@ int main(int argc, char **argv)
 	//Piano piano2(COUNT_OF_KEYS, "pianoNum", "pianoPressedNum", "noty-", 0, 10, renderWindow);
 	Piano piano(COUNT_OF_KEYS, renderWindow);
 
+	PlaySound("SoundName", NULL, SND_RESOURCE | SND_ASYNC);
 
-	
 
 	while (renderWindow.isOpen())
 	{
@@ -45,48 +45,48 @@ int main(int argc, char **argv)
 				renderWindow.close();
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::A) && !piano.MyButton[0].getState())
+		if (Keyboard::isKeyPressed(Keyboard::A) && !piano.MyButton[0].buttonStatus())
 		{
 			
-			PlaySound(TEXT("sounds/noty-1.wav"),NULL, SND_ASYNC);
-			piano.MyButton[0].buttonPlay();
+				//PlaySound(TEXT("sounds/noty-1.wav"), NULL, SND_ASYNC);
+				piano.MyButton[0].buttonPlay();
 			
 			
 		}
 
-		if (Keyboard::isKeyPressed(Keyboard::S) && !piano.MyButton[1].getState())
+		if (Keyboard::isKeyPressed(Keyboard::S) && !piano.MyButton[1].buttonStatus())
 		{			
 			piano.MyButton[1].buttonPlay();
 		}
-		if (Keyboard::isKeyPressed(Keyboard::D) && !piano.MyButton[2].getState())
+		if (Keyboard::isKeyPressed(Keyboard::D) && !piano.MyButton[2].buttonStatus())
 		{			
 			piano.MyButton[2].buttonPlay();
 		}
-		if (Keyboard::isKeyPressed(Keyboard::F) && !piano.MyButton[3].getState())
+		if (Keyboard::isKeyPressed(Keyboard::F) && !piano.MyButton[3].buttonStatus())
 		{
 			piano.MyButton[3].buttonPlay();
 		}
-		if (Keyboard::isKeyPressed(Keyboard::J) && !piano.MyButton[4].getState())
+		if (Keyboard::isKeyPressed(Keyboard::J) && !piano.MyButton[4].buttonStatus())
 		{
 			piano.MyButton[4].buttonPlay();
 		}
-		if (Keyboard::isKeyPressed(Keyboard::K) && !piano.MyButton[5].getState())
+		if (Keyboard::isKeyPressed(Keyboard::K) && !piano.MyButton[5].buttonStatus())
 		{
 			piano.MyButton[5].buttonPlay();
 		}
-		if (Keyboard::isKeyPressed(Keyboard::L) && !piano.MyButton[6].getState())
+		if (Keyboard::isKeyPressed(Keyboard::L) && !piano.MyButton[6].buttonStatus())
 		{
 			piano.MyButton[6].buttonPlay();
 		}
-		renderWindow.clear();
 		
+		renderWindow.clear();
 		if (event.type == Event::KeyReleased){
 		for (int i = 0; i < COUNT_OF_KEYS; i++) { 
-				PlaySound(NULL, NULL, SND_SYNC);
+				//PlaySound(NULL, NULL, SND_SYNC);
 				if (piano.MyButton[i].getButtonKey() == event.key.code + 65) {
 					piano.MyButton[i].buttonStop();
-					renderWindow.draw(piano.getSprite(i));
 				}
+				
 			}
 		}
 		for (int i = 0; i < COUNT_OF_KEYS; i++) {

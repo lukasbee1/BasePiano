@@ -14,10 +14,9 @@ private:
 	sf::SoundBuffer soundBuffer;
 	sf::Sound buttonSound;
 	static int widthSize;
-	bool state = false;
 	char buttonKey;
-	
-	
+
+
 
 public:
 	static void init();
@@ -29,10 +28,9 @@ public:
 
 	PianoButton(std::string f1, std::string f2, std::string sf1);
 
-	void changeState();
 	void setButtonKey(char key);
 	char getButtonKey();
-	bool getState();
 	void buttonPlay();
 	void buttonStop();
+	bool buttonStatus();
 };

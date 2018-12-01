@@ -39,9 +39,7 @@ PianoButton::PianoButton(std::string f1, std::string f2, std::string bf1) : file
 
 }
 
-void PianoButton::changeState() {
-	this->state = !this->state;
-}
+
 void PianoButton::setButtonKey(char key) {
 	this->buttonKey = key;
 }
@@ -49,14 +47,9 @@ char PianoButton::getButtonKey(){
 	return this->buttonKey;
 }
 
-bool PianoButton::getState() {
-	return this->state;
-}
-
 void PianoButton::buttonPlay() {
-	this->changeState();
-	//buttonSound.setBuffer(soundBuffer);
-	//buttonSound.play();
+	buttonSound.setBuffer(soundBuffer);
+	buttonSound.play();
 	this->setTexture("pressed");
 	
 }
@@ -64,5 +57,7 @@ void PianoButton::buttonStop() {
 	//buttonSound.setBuffer(soundBuffer);
 	buttonSound.stop();
 	this->setTexture("released");
-	this->changeState();
+}
+bool PianoButton::buttonStatus() {
+	return buttonSound.getStatus();
 }
